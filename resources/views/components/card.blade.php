@@ -1,5 +1,4 @@
-<article class="p-8 rounded-lg w-1/4 bg-slate-800 text-slate-300">
-    <span wire:loading>...caricamento dati</span>
+<article class="p-8 rounded-lg w-1/4 bg-slate-800 text-slate-300" wire:key='{{$product['id']}}'>
     <a href={{route('singleProduct',['id'=> $product['id']])}} wire:navigate>
         <div class="flex justify-center">
             <img src="{{ $product['image'] }}" alt="product-image" class="w-[128px] h-[128px] rounded-full text-center">

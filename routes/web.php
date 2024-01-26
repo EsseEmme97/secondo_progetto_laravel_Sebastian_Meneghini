@@ -5,5 +5,5 @@ use App\Livewire\SingleProduct;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', Products::class)->name('products');
-Route::get('/product/{id}', SingleProduct::class)->name('singleProduct');
+Route::get('/', Products::class)->name('products')->lazy();
+Route::get('/product/{id}', SingleProduct::class)->name('singleProduct')->lazy();

@@ -15,6 +15,11 @@ class SingleProduct extends Component
         $this->product=Http::get('https://fakestoreapi.com/products/'.$id)->json(); 
     }
 
+    public function placeholder()
+    {
+        return view('spinner');
+    }
+
     public function render()
     {
         return view('livewire.single-product');

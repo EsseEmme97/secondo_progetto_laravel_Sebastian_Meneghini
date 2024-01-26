@@ -9,9 +9,15 @@ class Products extends Component
 {
     public $products;
 
-    public function mount(){
-        $data=Http::get('https://fakestoreapi.com/products')->json();
-        $this->products=$data;
+    public function mount()
+    {
+        $data = Http::get('https://fakestoreapi.com/products')->json();
+        $this->products = $data;
+    }
+
+    public function placeholder()
+    {
+        return view('spinner');
     }
 
 
