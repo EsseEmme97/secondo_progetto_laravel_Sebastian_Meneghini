@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -24,8 +25,6 @@ class Products extends Component
         //     $newProduct->rate=$element['rating']['rate'];
         //     $newProduct->save();
         // }
-
-
         $this->products = Product::all();
     }
 

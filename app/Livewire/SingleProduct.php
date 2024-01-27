@@ -2,17 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class SingleProduct extends Component
 {
-    public $id;
-    public $product;
+    public Product $product;
 
     public function mount($id){
-        $this->id=$id;
-        $this->product=Http::get('https://fakestoreapi.com/products/'.$id)->json(); 
+        $this->product=Product::findOrFail($id);
     }
 
     public function placeholder()
