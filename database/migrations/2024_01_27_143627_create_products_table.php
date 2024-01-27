@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
-            $table->integer('price');
+            $table->float('price');
             $table->string('category');
-            $table->string('description');
-            $table->string('image');
+            $table->longText('description');
+            $table->longText('image');
+            $table->integer('rate')->nullable();
         });
     }
 
