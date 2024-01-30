@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.slide-in{
+	animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+		top: 50%;
+	}
+}

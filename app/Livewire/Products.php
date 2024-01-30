@@ -3,13 +3,17 @@
 namespace App\Livewire;
 
 use App\Models\Product;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Lazy;
+
+
 
 class Products extends Component
 {
     public $products;
+    public $showForm=false;
 
     public function mount()
     {
@@ -28,9 +32,20 @@ class Products extends Component
         $this->products = Product::all();
     }
 
+    #[On('createProduct')]
+    public function createProduct($data){
+        Product::create($data);
+        $this->products=Product::all();
+        $this->showForm=false;
+    }
+
     public function placeholder()
     {
         return view('spinner');
+    }
+
+    public function displayForm(){
+        $this->showForm= !$this->showForm;
     }
 
 
