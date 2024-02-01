@@ -6,8 +6,6 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Lazy;
-
 
 
 class Products extends Component
