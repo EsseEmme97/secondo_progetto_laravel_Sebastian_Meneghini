@@ -2,8 +2,10 @@
     <form  wire:submit='store'
         class="absolute z-50 translate-x-[-50%] translate-y-[-50%] top-[-50%] left-1/2 w-2/3 bg-slate-100 p-8 rounded slide-in" enctype="multipart/form-data">
         @csrf
-        <button wire:click="$parent.displayForm" type="button">X</button>
-        <div class="flex flex-col">
+        <div class="flex justify-end">
+            <button wire:click="$parent.displayForm" type="button"><box-icon name='x'size='md'></box-icon></button>
+        </div>
+        <div class="flex flex-col mt-4">
             <label class="text-sm" for="title">title</label>
             <input wire:model='title' name='title' id='title' type="text" class="p-2 rounded-md outline-none bg-slate-200 @error('title')
                 outline-red-500
