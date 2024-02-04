@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -32,12 +33,18 @@ class NewProductForm extends Component
             'category'=>$this->category,
             'description'=>$this->description,
             'price'=>$this->price,
-            'image'=>$this->imageFile->store('photos')
+            'image'=>$this->imageFile->store('public/photos'),
+            'user_id'=>Auth::id()
             ];
 
-            // dump($data);
+
+            if ($this->imageFile) {
+                $data['image'] = $this->imageFile->store('photos');
+            } elseif ($this->image) {
+                $data['image'] = $this->image;
+            }
         
-        $this->dispatch('createProduct', data:$data);
+            $this->dispatch('createProduct', data:$data);
 
     }
 
