@@ -6,4 +6,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', Products::class)->name('products')->lazy()->middleware('auth');
-Route::get('/product/{id}', SingleProduct::class)->name('singleProduct')->lazy();
+Route::get('/product/{id}', SingleProduct::class)->name('singleProduct')->lazy()->middleware('auth');

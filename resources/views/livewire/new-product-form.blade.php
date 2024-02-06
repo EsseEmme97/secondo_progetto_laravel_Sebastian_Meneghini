@@ -38,6 +38,9 @@
             <input wire:model='imageFile' name='imageFile' id='imageFile' type="file" class="p-2 rounded-md outline-none bg-slate-200 @error('imageFile')
             outline-red-500
         @enderror">
+        <p>@error('imageFile')
+            {{$errors->first('imageFile')}}
+        @enderror</p>
         </div>
         <div class="mt-8">
             <button type="submit" class="p-2 bg-indigo-400 w-full rounded-md text-white">Send Data</button>

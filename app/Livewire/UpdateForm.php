@@ -4,13 +4,14 @@ namespace App\Livewire;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\Component;
 
-class NewProductForm extends Component
+class UpdateForm extends Component
 {
     use WithFileUploads;
 
+    public $id;
     public $title;
     public $category;
     public $description;
@@ -18,15 +19,23 @@ class NewProductForm extends Component
     public $image;
     public $imageFile;
 
-    public function store()
-    {
+    public function mount($product){
+        $this->id=$product->id;
+        $this->title=$product->title;
+        $this->category= $product->category;
+        $this->description=$product->description;
+        $this->price=$product->price;
+        $this->imageFile=$product->image;
+    }
+
+    public function updateProduct(){
 
         $this->validate([
             'title' => 'required|min:3',
             'category' => 'required|min:3',
             'description' => 'required|min:10',
             'price' => 'required|numeric',
-            'imageFile' => 'mimes:jpg,bmp,png'
+            'imageFile' => 'image|max:1024'
         ]);
 
 
@@ -39,20 +48,13 @@ class NewProductForm extends Component
             'image' => $this->imageFile->store('public/photos'),
         ];
 
-        // dump($data);
+        Product::where('id',$this->id)->update($data);
 
-
-        if ($this->imageFile) {
-            $data['image'] = $this->imageFile->store('photos');
-        } elseif ($this->image) {
-            $data['image'] = $this->image;
-        }
-
-        $this->dispatch('createProduct', data: $data);
+        $this->dispatch('showForm');
     }
 
     public function render()
     {
-        return view('livewire.new-product-form');
+        return view('livewire.update-form');
     }
 }
